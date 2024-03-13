@@ -26,6 +26,5 @@ pipeline {
   failure{
        echo 'Failure in the build'
    }
-
   }
 }
