@@ -19,7 +19,7 @@ pipeline {
 
     }
 
- stage('Test') {
+ stage('test') {
             steps {
                 // Run JUnit tests and generate test reports
                 sh 'mvn test'
@@ -32,4 +32,4 @@ pipeline {
             }
         }
 }
-}
+
