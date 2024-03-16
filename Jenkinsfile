@@ -11,15 +11,12 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-                stage('build') {
+        stage('build') {
             steps {
-                 sh 'mvn clean install'
+                sh 'mvn clean install'
             }
         }
-
-    }
-
- stage('test') {
+        stage('test') {
             steps {
                 // Run JUnit tests and generate test reports
                 sh 'mvn test'
@@ -31,5 +28,5 @@ pipeline {
                 }
             }
         }
+    }
 }
-
