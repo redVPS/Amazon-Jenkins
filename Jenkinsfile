@@ -25,6 +25,9 @@ pipeline {
                 always {
                     // Archive JUnit test results
                      junit '/var/lib/jenkins/workspace/junittest/Amazon-Core/target/surefire-reports/*.xml'
+                    realtimeJUnit('**/target/surefire-reports/TEST-*.xml') {
+    sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
+}
                 }
             }
         }
