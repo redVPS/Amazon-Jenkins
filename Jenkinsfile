@@ -24,7 +24,7 @@ pipeline {
             post {
                 always {
                     // Archive JUnit test results
-                    junit 'target/surefire-reports/*.xml'
+                     junit '/var/lib/jenkins/workspace/junittest/Amazon-Core/target/surefire-reports/*.xml'
                 }
             }
         }
