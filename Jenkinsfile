@@ -19,10 +19,16 @@ pipeline {
 
     }
 
-  post{
-    
-  failure{
-       echo 'Failure in the build'
-   }
-  }
+ stage('Test') {
+            steps {
+                // Run JUnit tests and generate test reports
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    // Archive JUnit test results
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
 }
