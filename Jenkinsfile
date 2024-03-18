@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+
         stage('pull') {
             steps {
                 git branch: 'main', url: 'https://github.com/PraveenKuber/Amazon-Jenkins.git'
@@ -11,25 +12,24 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+
+
+        
         stage('build') {
             steps {
-                sh 'mvn clean install'
+                 sh 'mvn clean install'
             }
         }
-        stage('test') {
-            steps {
-                // Run JUnit tests and generate test reports
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    // Archive JUnit test results
-                     junit '/var/lib/jenkins/workspace/junittest/Amazon-Core/target/surefire-reports/*.xml'
-                    realtimeJUnit('**/target/surefire-reports/TEST-*.xml') {
-    sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
-}
-                }
-            }
-        }
+
     }
+
+  post{
+    
+  failure{
+       echo 'Failure in the build'
+   }
+
+  }
+
+
 }
