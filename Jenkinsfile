@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+
         stage('pull') {
             steps {
                 git branch: 'main', url: 'https://github.com/PraveenKuber/Amazon-Jenkins.git'
@@ -13,7 +14,8 @@ pipeline {
         }
 
 
-                stage('build') {
+
+        stage('build') {
             steps {
                  sh 'mvn clean install'
             }
@@ -26,5 +28,8 @@ pipeline {
   failure{
        echo 'Failure in the build'
    }
+
   }
+
+
 }
